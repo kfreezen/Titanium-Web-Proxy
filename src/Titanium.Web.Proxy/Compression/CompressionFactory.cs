@@ -18,6 +18,8 @@ namespace Titanium.Web.Proxy.Compression
                     return new GZipStream(stream, CompressionMode.Compress, leaveOpen);
                 case KnownHeaders.ContentEncodingDeflate:
                     return new DeflateStream(stream, CompressionMode.Compress, leaveOpen);
+                case KnownHeaders.ContentEncodingBrotli:
+                    return new BrotliSharpLib.BrotliStream(stream, CompressionMode.Compress, leaveOpen);
                 default:
                     throw new Exception($"Unsupported compression mode: {type}");
             }
